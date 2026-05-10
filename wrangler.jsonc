@@ -1,4 +1,7 @@
 {
   "name": "sstasbih-com",
-  "pages_build_output_dir": "dist"
+  "compatibility_date": "2026-05-10",
+  "assets": {
+    "directory": "./dist"
+  }
 }
