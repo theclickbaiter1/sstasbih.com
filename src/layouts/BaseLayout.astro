@@ -1,0 +1,64 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Shahid Tasbih — Aerospace Engineering student at MIT. Building autonomous machines and future spacecraft." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <slot />
+  <div class="lightbox" id="lightbox"></div>
+
+  <script>
+    // Cursor glow
+    const glow = document.getElementById('cursorGlow');
+    let glowVisible = false;
+    document.addEventListener('mousemove', (e) => {
+      if (!glowVisible) { glow!.style.opacity = '1'; glowVisible = true; }
+      glow!.style.left = e.clientX + 'px';
+      glow!.style.top = e.clientY + 'px';
+    });
+    document.addEventListener('mouseleave', () => {
+      glow!.style.opacity = '0';
+      glowVisible = false;
+    });
+
+    // Tag click isolation
+    document.querySelectorAll('a.tag').forEach((tag) => {
+      tag.addEventListener('click', (e) => e.stopPropagation());
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    document.querySelectorAll('.card-media img, .story-media img').forEach((img) => {
+      (img as HTMLElement).style.cursor = 'zoom-in';
+      img.addEventListener('click', () => {
+        lightbox!.innerHTML = `<img src="${(img as HTMLImageElement).src}" alt="${(img as HTMLImageElement).alt}" />`;
+        lightbox!.classList.add('active');
+      });
+    });
+    lightbox?.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        const vid = lightbox.querySelector('video');
+        if (vid) vid.pause();
+        lightbox.classList.remove('active');
+        lightbox.innerHTML = '';
+      }
+    });
+  </script>
+</body>
+</html>

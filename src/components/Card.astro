@@ -1,0 +1,44 @@
+---
+interface Props {
+  period: string;
+  title: string;
+  description: string;
+  tags: { label: string; href: string }[];
+  href?: string;
+  mediaPlaceholder?: boolean;
+}
+
+const { period, title, description, tags, href, mediaPlaceholder = false } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag
+  class="card"
+  {...href ? { href, target: "_blank", rel: "noopener noreferrer" } : {}}
+>
+  <div class="card-period">{period}</div>
+  <div class="card-body">
+    <h4 class="card-title">
+      {title}
+      {href && (
+        <svg class="card-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7" />
+          <path d="M7 7h10v10" />
+        </svg>
+      )}
+    </h4>
+    <p class="card-description" set:html={description} />
+    {mediaPlaceholder && (
+      <div class="card-media">
+        <slot name="media">
+          <div class="media-placeholder">Add images or videos to public/assets/ and update this section</div>
+        </slot>
+      </div>
+    )}
+    <div class="card-tags">
+      {tags.map(tag => (
+        <a class="tag" href={tag.href} target="_blank" rel="noopener noreferrer">{tag.label}</a>
+      ))}
+    </div>
+  </div>
+</Tag>

@@ -1,0 +1,44 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  tags: { label: string; href: string }[];
+}
+
+const { title, subtitle, tags } = Astro.props;
+---
+
+<BaseLayout title={`${title} — Shahid Tasbih`}>
+  <div class="project-page">
+    <a class="project-back" href="/#projects">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5" /><path d="M12 19l-7-7 7-7" />
+      </svg>
+      Back to portfolio
+    </a>
+
+    <header class="project-header">
+      <h1>{title}</h1>
+      <p class="project-subtitle">{subtitle}</p>
+      <div class="card-tags">
+        {tags.map(tag => (
+          <a class="tag" href={tag.href} target="_blank" rel="noopener noreferrer">{tag.label}</a>
+        ))}
+      </div>
+    </header>
+
+    <slot />
+
+    <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(13,148,136,0.1);">
+      <a class="project-back" href="/#projects">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5" /><path d="M12 19l-7-7 7-7" />
+        </svg>
+        Back to all projects
+      </a>
+    </div>
+  </div>
+</BaseLayout>

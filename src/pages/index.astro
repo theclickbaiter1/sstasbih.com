@@ -1,0 +1,204 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Card from '../components/Card.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Shahid Tasbih — Aerospace Engineer">
+  <div class="layout">
+    <Sidebar />
+
+    <main class="content">
+
+      <!-- ABOUT -->
+      <section id="about" class="section">
+        <h3 class="section-heading-mobile">About</h3>
+        <div class="about-text">
+          <p>
+            I'm an aerospace engineering student in
+            <a href="https://aeroastro.mit.edu/" target="_blank" rel="noopener noreferrer">MIT's Department of Aeronautics and Astronautics</a>
+            (Course 16), driven by a fascination with what lies beyond our atmosphere. My work sits at the
+            intersection of <span class="highlight">autonomous systems</span>,
+            <span class="highlight">machine learning</span>, and
+            <span class="highlight">spacecraft design</span>.
+          </p>
+          <p>
+            I've always been the kind of person who dives headfirst into challenges just to see what
+            happens. In high school, I built a giant ninja star out of 256 sheets of paper for my
+            Geometry class — starting from 1, then 4, 16, 64, 256 — only stopping because my teacher
+            ran out of unused packets. I taught myself AP Calc AB and BC in two weeks just because
+            Precalc wasn't challenging enough. I finished every AP World History chapter over
+            Thanksgiving break on a whim. The worst that can happen is I fail, and learn something
+            new in the process.
+          </p>
+          <p>
+            That same mindset drives my work today. I'm passionate about building autonomous machines
+            that can perceive and navigate complex environments — from lunar landers that teach
+            themselves to touch down safely, to satellites that detect their own anomalies. Beyond
+            autonomy, I'm deeply interested in the propulsion systems that will take us further:
+            designing future spacecraft capable of covering vast interstellar distances in short times,
+            potentially through <span class="highlight">nuclear propulsion</span> technologies.
+          </p>
+          <p>
+            Right now, I'm a research assistant in MIT's AeroAstro department, working on flight
+            software for satellite systems and optimizing orbital event detection with neural networks
+            on embedded hardware. When I'm not in the lab, I'm usually training reinforcement learning
+            agents to land on the Moon or engineering AR/VR systems for next-gen helmets.
+          </p>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="section">
+        <h3 class="section-heading-mobile">Experience</h3>
+
+        <Card
+          period="Jan 2026 — May 2026"
+          title="Research Assistant · MIT AeroAstro"
+          description="Utilized the F Prime framework to compile and execute flight software on the RP2350 chip for satellite applications. Currently conducting a comparative analysis between CNNs and algorithmic methods on NVIDIA Jetson Nano to optimize orbital event detection under strict power and memory constraints."
+          href="https://aeroastro.mit.edu/"
+          tags={[
+            { label: "F Prime", href: "https://en.wikipedia.org/wiki/F_Prime" },
+            { label: "CNNs", href: "https://en.wikipedia.org/wiki/Convolutional_neural_network" },
+            { label: "Jetson Nano", href: "https://en.wikipedia.org/wiki/Nvidia_Jetson" },
+            { label: "Python", href: "https://en.wikipedia.org/wiki/Python_(programming_language)" },
+            { label: "Embedded Systems", href: "https://en.wikipedia.org/wiki/Embedded_system" },
+          ]}
+        />
+
+        <Card
+          period="Jun 2024 — Aug 2024"
+          title="Independent Developer · Curious Cardinals"
+          description="Developed a predictive model for NVIDIA stock by scraping the top 100 daily news articles over a 30-day period and using VADER's compound normalization to quantify market sentiment for regression analysis. Engineered a validation pipeline mapping historical price action to VADER sentiment indices."
+          tags={[
+            { label: "Python", href: "https://en.wikipedia.org/wiki/Python_(programming_language)" },
+            { label: "NLP", href: "https://en.wikipedia.org/wiki/Natural_language_processing" },
+            { label: "VADER", href: "https://en.wikipedia.org/wiki/Sentiment_analysis" },
+            { label: "Web Scraping", href: "https://en.wikipedia.org/wiki/Web_scraping" },
+            { label: "Regression", href: "https://en.wikipedia.org/wiki/Regression_analysis" },
+          ]}
+        />
+
+        <a class="resume-link" href="mailto:sstasbih@mit.edu">
+          View Full Résumé
+          <svg class="card-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17L17 7" /><path d="M7 7h10v10" />
+          </svg>
+        </a>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="section">
+        <h3 class="section-heading-mobile">Projects</h3>
+
+        <a class="card" href="/projects/lunar-lander">
+          <div class="card-period">Reinforcement Learning</div>
+          <div class="card-body">
+            <h4 class="card-title">
+              Deep Q-Network for Autonomous Lunar Landing
+              <svg class="card-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7" /><path d="M7 7h10v10" />
+              </svg>
+            </h4>
+            <p class="card-description">
+              Engineered a PyTorch D3QN agent to solve a 2D landing environment with &gt;95% success, then extended into a custom 3D rigid-body MuJoCo simulation with accurate lunar gravity.
+            </p>
+            <div class="card-tags">
+              <a class="tag" href="https://en.wikipedia.org/wiki/PyTorch" target="_blank" rel="noopener noreferrer">PyTorch</a>
+              <a class="tag" href="https://en.wikipedia.org/wiki/Q-learning#Deep_Q-network" target="_blank" rel="noopener noreferrer">D3QN</a>
+              <a class="tag" href="https://en.wikipedia.org/wiki/Deterministic_policy_gradient" target="_blank" rel="noopener noreferrer">DDPG</a>
+              <a class="tag" href="https://en.wikipedia.org/wiki/MuJoCo" target="_blank" rel="noopener noreferrer">MuJoCo</a>
+            </div>
+          </div>
+        </a>
+
+        <a class="card" href="/projects/ar-hmd">
+          <div class="card-period">Hardware + CV</div>
+          <div class="card-body">
+            <h4 class="card-title">
+              G24-Integrated AR/VR Head-Mounted Display
+              <svg class="card-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7" /><path d="M7 7h10v10" />
+              </svg>
+            </h4>
+            <p class="card-description">
+              Architecting a 3D-printable smartphone HMD for G24 mounts with vibration-dampening TPU interfaces and a real-time computer vision pipeline for AR overlays.
+            </p>
+            <div class="card-tags">
+              <a class="tag" href="https://en.wikipedia.org/wiki/Computer_vision" target="_blank" rel="noopener noreferrer">Computer Vision</a>
+              <a class="tag" href="https://en.wikipedia.org/wiki/Virtual_reality" target="_blank" rel="noopener noreferrer">AR/VR</a>
+              <a class="tag" href="https://en.wikipedia.org/wiki/3D_printing" target="_blank" rel="noopener noreferrer">3D Printing</a>
+              <a class="tag" href="https://en.wikipedia.org/wiki/Kalman_filter" target="_blank" rel="noopener noreferrer">Kalman Filters</a>
+            </div>
+          </div>
+        </a>
+
+        <a class="card" href="/projects/satellite-anomaly">
+          <div class="card-period">ML + Aerospace</div>
+          <div class="card-body">
+            <h4 class="card-title">
+              Satellite Telemetry Anomaly Detection
+              <svg class="card-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7" /><path d="M7 7h10v10" />
+              </svg>
+            </h4>
+            <p class="card-description">
+              Engineering an LSTM-based Autoencoder to autonomously detect anomalies in satellite telemetry using NASA's SMAP/MSL datasets.
+            </p>
+            <div class="card-tags">
+              <a class="tag" href="https://en.wikipedia.org/wiki/Long_short-term_memory" target="_blank" rel="noopener noreferrer">LSTM</a>
+              <a class="tag" href="https://en.wikipedia.org/wiki/Autoencoder" target="_blank" rel="noopener noreferrer">Autoencoder</a>
+              <a class="tag" href="https://en.wikipedia.org/wiki/Anomaly_detection" target="_blank" rel="noopener noreferrer">Anomaly Detection</a>
+              <a class="tag" href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank" rel="noopener noreferrer">Python</a>
+            </div>
+          </div>
+        </a>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education" class="section">
+        <h3 class="section-heading-mobile">Education</h3>
+
+        <Card
+          period="June 2025 — June 2029"
+          title="Massachusetts Institute of Technology"
+          description="Candidate for B.S. in Aerospace Engineering (Course 16). <br /><strong>Relevant Coursework:</strong> Introduction to Autonomy <br /><strong>Advanced Learning (Audit):</strong> Deep Learning (Graduate Level), Advances in Computer Vision (Graduate Level)"
+          tags={[]}
+        />
+
+        <Card
+          period="Sep 2023 — Apr 2024"
+          title="The Coding School"
+          description="Completed two-semester courses in Artificial Intelligence and Quantum Computing, developing neural network, NLP, and reinforcement learning models for real-world applications. Implemented foundational quantum algorithms using the Cirq library."
+          tags={[]}
+        />
+      </section>
+
+      <footer class="footer">
+        <p>
+          Designed and built with care. Inspired by
+          <a href="https://brittanychiang.com" target="_blank" rel="noopener noreferrer">Brittany Chiang</a>.
+          Set in <a href="https://rsms.me/inter/" target="_blank" rel="noopener noreferrer">Inter</a>.
+        </p>
+      </footer>
+
+    </main>
+  </div>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('data-section') === id);
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+    sections.forEach((s) => observer.observe(s));
+  </script>
+</BaseLayout>

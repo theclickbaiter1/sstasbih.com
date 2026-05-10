@@ -1,0 +1,119 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+---
+
+<ProjectLayout
+  title="Deep Q-Network for Autonomous Lunar Landing"
+  subtitle="Teaching an RL agent to land on the Moon — from 2D prototypes to 3D physics simulations"
+  tags={[
+    { label: "PyTorch", href: "https://en.wikipedia.org/wiki/PyTorch" },
+    { label: "D3QN", href: "https://en.wikipedia.org/wiki/Q-learning#Deep_Q-network" },
+    { label: "DDPG", href: "https://en.wikipedia.org/wiki/Deterministic_policy_gradient" },
+    { label: "MuJoCo", href: "https://en.wikipedia.org/wiki/MuJoCo" },
+    { label: "PER", href: "https://en.wikipedia.org/wiki/Experience_replay" },
+  ]}
+>
+
+  <section class="story-section">
+    <h2>The Problem</h2>
+    <p>
+      Autonomous lunar landing is one of the hardest control problems in aerospace — the agent must
+      manage fuel, attitude, and descent rate simultaneously while dealing with no atmosphere for
+      aerodynamic braking. I wanted to see if a reinforcement learning agent could learn this from
+      scratch, with no pre-programmed flight dynamics knowledge.
+    </p>
+  </section>
+
+  <section class="story-section">
+    <h2>Phase 1: 2D Prototype</h2>
+    <p>
+      I started with OpenAI Gymnasium's LunarLander-v2 environment — a simplified 2D problem with
+      discrete thrust actions. I implemented a Dueling Double Deep Q-Network (D3QN) in PyTorch that
+      achieved a &gt;95% landing success rate after training.
+    </p>
+    <div class="story-callout">
+      <strong>Key insight:</strong> The dueling architecture — splitting the Q-value into state-value
+      and advantage streams — dramatically improved learning stability compared to vanilla DQN.
+    </div>
+
+    <!-- Replace with your actual screenshots/videos -->
+    <div class="story-media">
+      <!--
+      <img src="/assets/lunar-2d-training.png" alt="2D training reward curve" />
+      <p class="story-caption">Training reward curve showing convergence after ~800 episodes</p>
+      -->
+      <p class="story-caption">Add training curves and 2D landing footage here: public/assets/</p>
+    </div>
+  </section>
+
+  <section class="story-section">
+    <h2>Phase 2: Custom 3D MuJoCo Environment</h2>
+    <p>
+      The 2D environment was a great proof of concept, but real lunar landers operate in 3D with
+      continuous thrust control. I built a custom rigid-body simulation in MuJoCo with accurate
+      1.62 m/s² lunar gravity, modeling a lander with 5 individually controllable thrusters.
+    </p>
+    <p>
+      The state space expanded to 13 dimensions: position (x, y, z), velocity, orientation quaternion,
+      angular velocity, and remaining fuel mass. This was too complex for discrete actions, so I
+      switched architectures.
+    </p>
+
+    <div class="story-grid">
+      <!--
+      <div class="story-media">
+        <img src="/assets/mujoco-lander-model.png" alt="MuJoCo lander 3D model" />
+        <p class="story-caption">Custom lander model in MuJoCo</p>
+      </div>
+      <div class="story-media">
+        <img src="/assets/mujoco-env-overview.png" alt="MuJoCo environment overview" />
+        <p class="story-caption">Landing pad and terrain setup</p>
+      </div>
+      -->
+    </div>
+  </section>
+
+  <section class="story-section">
+    <h2>Phase 3: DDPG with Hybrid Control</h2>
+    <p>
+      I upgraded to a Deep Deterministic Policy Gradient (DDPG) agent to handle the continuous
+      action space. The key innovation was a hybrid PD-RL attitude controller: the RL agent outputs
+      high-level 3D thrust and torque commands, while a PD controller handles low-level attitude
+      stabilization across the 5 thrusters.
+    </p>
+
+    <div class="story-callout">
+      <strong>Training tricks that mattered:</strong>
+      <ul style="margin-top: 0.5rem; padding-left: 1.25rem;">
+        <li>Prioritized Experience Replay (PER) to focus on rare failure modes</li>
+        <li>Soft target updates (tau = 0.005) instead of hard copies</li>
+        <li>Gradient clipping to prevent catastrophic policy updates</li>
+        <li>Shaped reward: fuel efficiency + slow terminal descent + upright stability</li>
+      </ul>
+    </div>
+
+    <!-- Replace with your actual video -->
+    <div class="story-media">
+      <!--
+      <video src="/assets/lunar-3d-landing.mp4" controls></video>
+      <p class="story-caption">Successful autonomous landing in the 3D MuJoCo environment</p>
+      -->
+      <p class="story-caption">Add 3D landing demo video here: public/assets/</p>
+    </div>
+  </section>
+
+  <section class="story-section">
+    <h2>Results & Takeaways</h2>
+    <p>
+      The final DDPG agent achieves reliable soft landings with fuel-efficient trajectories. The hybrid
+      controller approach was essential — pure RL struggled with attitude control, while the PD layer
+      provided the stability the RL agent could build on top of.
+    </p>
+    <p>
+      This project deepened my understanding of sim-to-real transfer challenges and reinforced my
+      interest in autonomous spacecraft systems. The next step would be domain randomization to prepare
+      for transfer to actual flight hardware.
+    </p>
+  </section>
+
+</ProjectLayout>
