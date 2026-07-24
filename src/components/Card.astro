@@ -54,10 +54,11 @@ const Tag = href ? 'a' : 'div';
     )}
     <div class="card-tags">
       {tags.map(tag => (
-        tag.href ? (
-          <a class="tag" href={tag.href} target="_blank" rel="noopener noreferrer">{tag.label}</a>
-        ) : (
+        // Never nest <a> inside an <a class="card"> — browsers break the layout.
+        href || !tag.href ? (
           <span class="tag">{tag.label}</span>
+        ) : (
+          <a class="tag" href={tag.href} target="_blank" rel="noopener noreferrer">{tag.label}</a>
         )
       ))}
     </div>
