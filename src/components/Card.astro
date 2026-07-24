@@ -3,12 +3,24 @@ interface Props {
   period: string;
   title: string;
   description: string;
-  tags: { label: string; href: string }[];
+  tags: { label: string; href?: string }[];
   href?: string;
+  /** Optional homepage thumbnail (e.g. /assets/projects/lunar-lander/thumb.jpg) */
+  image?: string;
+  imageAlt?: string;
   mediaPlaceholder?: boolean;
 }
 
-const { period, title, description, tags, href, mediaPlaceholder = false } = Astro.props;
+const {
+  period,
+  title,
+  description,
+  tags,
+  href,
+  image,
+  imageAlt = title,
+  mediaPlaceholder = false,
+} = Astro.props;
 const Tag = href ? 'a' : 'div';
 ---
 
@@ -28,6 +40,11 @@ const Tag = href ? 'a' : 'div';
       )}
     </h4>
     <p class="card-description" set:html={description} />
+    {image && (
+      <div class="card-thumb reveal">
+        <img src={image} alt={imageAlt} loading="lazy" decoding="async" />
+      </div>
+    )}
     {mediaPlaceholder && (
       <div class="card-media">
         <slot name="media">
@@ -37,7 +54,11 @@ const Tag = href ? 'a' : 'div';
     )}
     <div class="card-tags">
       {tags.map(tag => (
-        <a class="tag" href={tag.href} target="_blank" rel="noopener noreferrer">{tag.label}</a>
+        tag.href ? (
+          <a class="tag" href={tag.href} target="_blank" rel="noopener noreferrer">{tag.label}</a>
+        ) : (
+          <span class="tag">{tag.label}</span>
+        )
       ))}
     </div>
   </div>

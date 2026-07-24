@@ -1,0 +1,34 @@
+---
+/**
+ * Single image or video with caption + lightbox.
+ *
+ * Drop files in: public/assets/projects/{slug}/
+ * Usage:
+ *   <Media src="/assets/projects/lunar-lander/training.png" alt="..." caption="..." />
+ *   <Media src="/assets/projects/lunar-lander/demo.mp4" alt="..." type="video" />
+ */
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  type?: 'image' | 'video';
+  /** Aspect ratio hint for layout stability before load */
+  aspect?: '16/9' | '4/3' | '1/1' | 'auto';
+}
+
+const { src, alt, caption, type = 'image', aspect = 'auto' } = Astro.props;
+const aspectStyle = aspect === 'auto' ? undefined : `aspect-ratio: ${aspect}`;
+---
+
+<figure class="media reveal" data-media>
+  <div class="media-frame" style={aspectStyle}>
+    {type === 'video' ? (
+      <video src={src} controls preload="metadata" playsinline>
+        <track kind="captions" />
+      </video>
+    ) : (
+      <img src={src} alt={alt} loading="lazy" decoding="async" />
+    )}
+  </div>
+  {caption && <figcaption class="media-caption">{caption}</figcaption>}
+</figure>

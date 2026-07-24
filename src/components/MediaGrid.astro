@@ -1,0 +1,19 @@
+---
+/**
+ * Side-by-side media. Pass Media components as children:
+ *
+ * <MediaGrid>
+ *   <Media src="..." alt="..." caption="..." />
+ *   <Media src="..." alt="..." caption="..." />
+ * </MediaGrid>
+ */
+interface Props {
+  columns?: 2 | 3;
+}
+
+const { columns = 2 } = Astro.props;
+---
+
+<div class={`media-grid media-grid--${columns}`}>
+  <slot />
+</div>

@@ -35,18 +35,30 @@ import '../styles/global.css';
           <p>
             That same mindset drives my work today. I'm passionate about building autonomous machines
             that can perceive and navigate complex environments — from lunar landers that teach
-            themselves to touch down safely, to satellites that detect their own anomalies. Beyond
-            autonomy, I'm deeply interested in the propulsion systems that will take us further:
-            designing future spacecraft capable of covering vast interstellar distances in short times,
-            potentially through <span class="highlight">nuclear propulsion</span> technologies.
+            themselves to touch down safely, to robotic systems and prediction models that operate
+            under real-world constraints. Beyond autonomy, I'm deeply interested in the propulsion
+            systems that will take us further: designing future spacecraft capable of covering vast
+            interstellar distances in short times, potentially through
+            <span class="highlight">nuclear propulsion</span> technologies.
           </p>
           <p>
             Right now, I'm a research assistant in MIT's AeroAstro department, working on flight
             software for satellite systems and optimizing orbital event detection with neural networks
             on embedded hardware. When I'm not in the lab, I'm usually training reinforcement learning
-            agents to land on the Moon or engineering AR/VR systems for next-gen helmets.
+            agents, building hardware, or iterating on side projects that scratch a curiosity itch.
           </p>
         </div>
+
+        <aside class="note">
+          <span class="note-label">For students reading this</span>
+          <p>
+            You don't need permission to start. Every project here began with me being curious
+            and a little bored — teaching myself Calc BC in two weeks, building an AC out of
+            scrap and aluminum foil, training an agent to land on the Moon. Pick something that
+            scares you a little and start badly. The worst case is you fail and learn something,
+            which is a pretty good worst case.
+          </p>
+        </aside>
       </section>
 
       <!-- EXPERIENCE -->
@@ -67,20 +79,7 @@ import '../styles/global.css';
           ]}
         />
 
-        <Card
-          period="Jun 2024 — Aug 2024"
-          title="Independent Developer · Curious Cardinals"
-          description="Developed a predictive model for NVIDIA stock by scraping the top 100 daily news articles over a 30-day period and using VADER's compound normalization to quantify market sentiment for regression analysis. Engineered a validation pipeline mapping historical price action to VADER sentiment indices."
-          tags={[
-            { label: "Python", href: "https://en.wikipedia.org/wiki/Python_(programming_language)" },
-            { label: "NLP", href: "https://en.wikipedia.org/wiki/Natural_language_processing" },
-            { label: "VADER", href: "https://en.wikipedia.org/wiki/Sentiment_analysis" },
-            { label: "Web Scraping", href: "https://en.wikipedia.org/wiki/Web_scraping" },
-            { label: "Regression", href: "https://en.wikipedia.org/wiki/Regression_analysis" },
-          ]}
-        />
-
-        <a class="resume-link" href="mailto:sstasbih@mit.edu">
+        <a class="resume-link" href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer">
           View Full Résumé
           <svg class="card-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M7 17L17 7" /><path d="M7 7h10v10" />
@@ -102,58 +101,144 @@ import '../styles/global.css';
               </svg>
             </h4>
             <p class="card-description">
-              Engineered a PyTorch D3QN agent to solve a 2D landing environment with &gt;95% success, then extended into a custom 3D rigid-body MuJoCo simulation with accurate lunar gravity.
+              Engineered a PyTorch D3QN agent to solve a 2D landing environment with &gt;95% success,
+              then extended into a custom 3D rigid-body MuJoCo simulation with accurate 1.62 m/s²
+              lunar gravity. Upgraded to DDPG for a 13-dimensional continuous state space with a
+              hybrid PD-RL attitude controller mapping actions across 5 thrusters.
             </p>
             <div class="card-tags">
               <a class="tag" href="https://en.wikipedia.org/wiki/PyTorch" target="_blank" rel="noopener noreferrer">PyTorch</a>
               <a class="tag" href="https://en.wikipedia.org/wiki/Q-learning#Deep_Q-network" target="_blank" rel="noopener noreferrer">D3QN</a>
               <a class="tag" href="https://en.wikipedia.org/wiki/Deterministic_policy_gradient" target="_blank" rel="noopener noreferrer">DDPG</a>
               <a class="tag" href="https://en.wikipedia.org/wiki/MuJoCo" target="_blank" rel="noopener noreferrer">MuJoCo</a>
+              <a class="tag" href="https://en.wikipedia.org/wiki/Experience_replay" target="_blank" rel="noopener noreferrer">PER</a>
             </div>
           </div>
         </a>
 
-        <a class="card" href="/projects/ar-hmd">
-          <div class="card-period">Hardware + CV</div>
+        <a class="card" href="/projects/ufo">
+          <div class="card-period">Reinforcement Learning</div>
           <div class="card-body">
             <h4 class="card-title">
-              G24-Integrated AR/VR Head-Mounted Display
+              UFO Project
               <svg class="card-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M7 17L17 7" /><path d="M7 7h10v10" />
               </svg>
             </h4>
             <p class="card-description">
-              Architecting a 3D-printable smartphone HMD for G24 mounts with vibration-dampening TPU interfaces and a real-time computer vision pipeline for AR overlays.
+              Details coming soon.
             </p>
             <div class="card-tags">
-              <a class="tag" href="https://en.wikipedia.org/wiki/Computer_vision" target="_blank" rel="noopener noreferrer">Computer Vision</a>
-              <a class="tag" href="https://en.wikipedia.org/wiki/Virtual_reality" target="_blank" rel="noopener noreferrer">AR/VR</a>
-              <a class="tag" href="https://en.wikipedia.org/wiki/3D_printing" target="_blank" rel="noopener noreferrer">3D Printing</a>
-              <a class="tag" href="https://en.wikipedia.org/wiki/Kalman_filter" target="_blank" rel="noopener noreferrer">Kalman Filters</a>
+              <span class="tag">RL</span>
+              <span class="tag">Simulation</span>
             </div>
           </div>
         </a>
 
-        <a class="card" href="/projects/satellite-anomaly">
-          <div class="card-period">ML + Aerospace</div>
+        <a class="card" href="/projects/7-axis-arm">
+          <div class="card-period">Robotics</div>
           <div class="card-body">
             <h4 class="card-title">
-              Satellite Telemetry Anomaly Detection
+              7-Axis Arm
               <svg class="card-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M7 17L17 7" /><path d="M7 7h10v10" />
               </svg>
             </h4>
             <p class="card-description">
-              Engineering an LSTM-based Autoencoder to autonomously detect anomalies in satellite telemetry using NASA's SMAP/MSL datasets.
+              Details coming soon.
             </p>
             <div class="card-tags">
-              <a class="tag" href="https://en.wikipedia.org/wiki/Long_short-term_memory" target="_blank" rel="noopener noreferrer">LSTM</a>
-              <a class="tag" href="https://en.wikipedia.org/wiki/Autoencoder" target="_blank" rel="noopener noreferrer">Autoencoder</a>
-              <a class="tag" href="https://en.wikipedia.org/wiki/Anomaly_detection" target="_blank" rel="noopener noreferrer">Anomaly Detection</a>
-              <a class="tag" href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank" rel="noopener noreferrer">Python</a>
+              <span class="tag">Robotics</span>
+              <span class="tag">Hardware</span>
             </div>
           </div>
         </a>
+
+        <a class="card" href="/projects/kalshi-optimization">
+          <div class="card-period">Markets + ML</div>
+          <div class="card-body">
+            <h4 class="card-title">
+              Kalshi Optimization
+              <svg class="card-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7" /><path d="M7 7h10v10" />
+              </svg>
+            </h4>
+            <p class="card-description">
+              Details coming soon.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Trading</span>
+              <span class="tag">Optimization</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="card" href="/projects/spike-detector">
+          <div class="card-period">ML + Markets</div>
+          <div class="card-body">
+            <h4 class="card-title">
+              Spike Detector
+              <svg class="card-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7" /><path d="M7 7h10v10" />
+              </svg>
+            </h4>
+            <p class="card-description">
+              Details coming soon.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Detection</span>
+              <span class="tag">ML</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="card" href="/projects/erwin">
+          <div class="card-period">AI Voice</div>
+          <div class="card-body">
+            <h4 class="card-title">
+              Project Erwin
+              <svg class="card-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7" /><path d="M7 7h10v10" />
+              </svg>
+            </h4>
+            <p class="card-description">
+              Details coming soon.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Voice AI</span>
+              <span class="tag">ML</span>
+            </div>
+          </div>
+        </a>
+      </section>
+
+      <!-- COMMUNITY -->
+      <section id="community" class="section">
+        <h3 class="section-heading-mobile">Community</h3>
+
+        <Card
+          period="STEM Education"
+          title="RiseEd · Accessible STEM Learning"
+          description="Built RiseEd to make STEM approachable for younger students — especially those from low-income backgrounds. Designed a website of simple, engaging lesson slides and booklets, iterating on feedback from teachers to turn intimidating topics into resources students and educators could actually use."
+          tags={[
+            { label: "Education" },
+            { label: "Outreach" },
+            { label: "Curriculum Design" },
+            { label: "Web" },
+          ]}
+        />
+
+        <Card
+          period="Thermodynamics"
+          title="CoolBreeze · Low-Cost Air Conditioner"
+          description="Designed and built a low-cost air conditioner grounded in thermodynamics principles — optimizing insulation and efficiency on a tight budget — then documented the full build in a video to make the science reproducible for anyone who wanted to follow along."
+          tags={[
+            { label: "Thermodynamics" },
+            { label: "Hardware" },
+            { label: "DIY" },
+            { label: "Science Comm" },
+          ]}
+        />
       </section>
 
       <!-- EDUCATION -->
@@ -174,14 +259,6 @@ import '../styles/global.css';
           tags={[]}
         />
       </section>
-
-      <footer class="footer">
-        <p>
-          Designed and built with care. Inspired by
-          <a href="https://brittanychiang.com" target="_blank" rel="noopener noreferrer">Brittany Chiang</a>.
-          Set in <a href="https://rsms.me/inter/" target="_blank" rel="noopener noreferrer">Inter</a>.
-        </p>
-      </footer>
 
     </main>
   </div>

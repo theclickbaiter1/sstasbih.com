@@ -1,5 +1,7 @@
 ---
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import Media from '../../components/Media.astro';
+import MediaGrid from '../../components/MediaGrid.astro';
 ---
 
 <ProjectLayout
@@ -36,14 +38,15 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro';
       and advantage streams — dramatically improved learning stability compared to vanilla DQN.
     </div>
 
-    <!-- Replace with your actual screenshots/videos -->
-    <div class="story-media">
-      <!--
-      <img src="/assets/lunar-2d-training.png" alt="2D training reward curve" />
-      <p class="story-caption">Training reward curve showing convergence after ~800 episodes</p>
-      -->
-      <p class="story-caption">Add training curves and 2D landing footage here: public/assets/</p>
-    </div>
+    <!-- Drop files into public/assets/projects/lunar-lander/ then uncomment -->
+    <!--
+    <Media
+      src="/assets/projects/lunar-lander/training-curve.png"
+      alt="2D training reward curve"
+      caption="Training reward curve showing convergence after ~800 episodes"
+      aspect="16/9"
+    />
+    -->
   </section>
 
   <section class="story-section">
@@ -59,18 +62,20 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro';
       switched architectures.
     </p>
 
-    <div class="story-grid">
-      <!--
-      <div class="story-media">
-        <img src="/assets/mujoco-lander-model.png" alt="MuJoCo lander 3D model" />
-        <p class="story-caption">Custom lander model in MuJoCo</p>
-      </div>
-      <div class="story-media">
-        <img src="/assets/mujoco-env-overview.png" alt="MuJoCo environment overview" />
-        <p class="story-caption">Landing pad and terrain setup</p>
-      </div>
-      -->
-    </div>
+    <!--
+    <MediaGrid>
+      <Media
+        src="/assets/projects/lunar-lander/mujoco-model.png"
+        alt="MuJoCo lander 3D model"
+        caption="Custom lander model in MuJoCo"
+      />
+      <Media
+        src="/assets/projects/lunar-lander/env-overview.png"
+        alt="MuJoCo environment overview"
+        caption="Landing pad and terrain setup"
+      />
+    </MediaGrid>
+    -->
   </section>
 
   <section class="story-section">
@@ -92,14 +97,15 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro';
       </ul>
     </div>
 
-    <!-- Replace with your actual video -->
-    <div class="story-media">
-      <!--
-      <video src="/assets/lunar-3d-landing.mp4" controls></video>
-      <p class="story-caption">Successful autonomous landing in the 3D MuJoCo environment</p>
-      -->
-      <p class="story-caption">Add 3D landing demo video here: public/assets/</p>
-    </div>
+    <!--
+    <Media
+      src="/assets/projects/lunar-lander/landing-demo.mp4"
+      alt="3D autonomous landing demo"
+      caption="Successful autonomous landing in the 3D MuJoCo environment"
+      type="video"
+      aspect="16/9"
+    />
+    -->
   </section>
 
   <section class="story-section">
