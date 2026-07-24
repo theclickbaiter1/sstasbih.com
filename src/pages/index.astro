@@ -5,7 +5,7 @@ import Card from '../components/Card.astro';
 import '../styles/global.css';
 ---
 
-<BaseLayout title="Shahid Tasbih — Aerospace Engineer">
+<BaseLayout title="Shahid Tasbih - Aerospace Engineer">
   <div class="layout">
     <Sidebar />
 
@@ -26,7 +26,7 @@ import '../styles/global.css';
           <p>
             I've always been the kind of person who dives headfirst into challenges just to see what
             happens. In high school, I built a giant ninja star out of 256 sheets of paper for my
-            Geometry class — starting from 1, then 4, 16, 64, 256 — only stopping because my teacher
+            Geometry class, starting from 1, then 4, 16, 64, 256, only stopping because my teacher
             ran out of unused packets. I taught myself AP Calc AB and BC in two weeks just because
             Precalc wasn't challenging enough. I finished every AP World History chapter over
             Thanksgiving break on a whim. The worst that can happen is I fail, and learn something
@@ -34,7 +34,7 @@ import '../styles/global.css';
           </p>
           <p>
             That same mindset drives my work today. I'm passionate about building autonomous machines
-            that can perceive and navigate complex environments — from lunar landers that teach
+            that can perceive and navigate complex environments, from lunar landers that teach
             themselves to touch down safely, to robotic systems and prediction models that operate
             under real-world constraints. Beyond autonomy, I'm deeply interested in the propulsion
             systems that will take us further: designing future spacecraft capable of covering vast
@@ -53,7 +53,7 @@ import '../styles/global.css';
           <span class="note-label">For students reading this</span>
           <p>
             You don't need permission to start. Every project here began with me being curious
-            and a little bored — teaching myself Calc BC in two weeks, building an AC out of
+            and a little bored: teaching myself Calc BC in two weeks, building an AC out of
             scrap and aluminum foil, training an agent to land on the Moon. Pick something that
             scares you a little and start badly. The worst case is you fail and learn something,
             which is a pretty good worst case.
@@ -66,7 +66,7 @@ import '../styles/global.css';
         <h3 class="section-heading-mobile">Experience</h3>
 
         <Card
-          period="Jan 2026 — May 2026"
+          period="Jan 2026 - May 2026"
           title="Research Assistant · MIT AeroAstro"
           description="Utilized the F Prime framework to compile and execute flight software on the RP2350 chip for satellite applications. Currently conducting a comparative analysis between CNNs and algorithmic methods on NVIDIA Jetson Nano to optimize orbital event detection under strict power and memory constraints."
           href="https://aeroastro.mit.edu/"
@@ -117,7 +117,7 @@ import '../styles/global.css';
         </a>
 
         <a class="card" href="/projects/ufo">
-          <div class="card-period">Reinforcement Learning</div>
+          <div class="card-period">G-Force Mitigation</div>
           <div class="card-body">
             <h4 class="card-title">
               UFO Project
@@ -126,30 +126,37 @@ import '../styles/global.css';
               </svg>
             </h4>
             <p class="card-description">
-              Details coming soon.
+              Building a centrifugal system that cancels linear acceleration via rotational
+              mechanics, aimed at aggressive jet and missile-evasion maneuvers without the same
+              sustained load on a pilot. A 2D RL policy cuts a 10g outer pulse down to ~1.64g
+              on the inner accelerometer.
             </p>
             <div class="card-tags">
               <span class="tag">RL</span>
               <span class="tag">Simulation</span>
+              <span class="tag">Controls</span>
             </div>
           </div>
         </a>
 
-        <a class="card" href="/projects/7-axis-arm">
+        <a class="card" href="/projects/6-axis-arm">
           <div class="card-period">Robotics</div>
           <div class="card-body">
             <h4 class="card-title">
-              7-Axis Arm
+              6-Axis Arm
               <svg class="card-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M7 17L17 7" /><path d="M7 7h10v10" />
               </svg>
             </h4>
             <p class="card-description">
-              Details coming soon.
+              Adaptive inverse kinematics that keeps learning through hardware deformities
+              using a Hebbian control policy, so everyday IK can tolerate looser (cheaper)
+              mechanical tolerances instead of perfect calibration forever.
             </p>
             <div class="card-tags">
-              <span class="tag">Robotics</span>
-              <span class="tag">Hardware</span>
+              <span class="tag">Hebbian</span>
+              <span class="tag">IK</span>
+              <span class="tag">MuJoCo</span>
             </div>
           </div>
         </a>
@@ -164,11 +171,14 @@ import '../styles/global.css';
               </svg>
             </h4>
             <p class="card-description">
-              Details coming soon.
+              Autonomous sports-contract scanner that fuses Elo, bookmaker odds, and team
+              stats into a fair-value model, then sizes edges with Kelly under statistical-mechanics
+              risk dampers and Telegram alerts.
             </p>
             <div class="card-tags">
-              <span class="tag">Trading</span>
-              <span class="tag">Optimization</span>
+              <span class="tag">Elo</span>
+              <span class="tag">Kelly</span>
+              <span class="tag">Kalshi</span>
             </div>
           </div>
         </a>
@@ -183,11 +193,14 @@ import '../styles/global.css';
               </svg>
             </h4>
             <p class="card-description">
-              Details coming soon.
+              Pre-market binary classifier for significant intraday moves: two-stage XGBoost
+              with FinBERT sentiment and a stat-mech layer, fully automated paper trading via
+              Alpaca and Telegram.
             </p>
             <div class="card-tags">
-              <span class="tag">Detection</span>
-              <span class="tag">ML</span>
+              <span class="tag">XGBoost</span>
+              <span class="tag">FinBERT</span>
+              <span class="tag">Alpaca</span>
             </div>
           </div>
         </a>
@@ -202,11 +215,13 @@ import '../styles/global.css';
               </svg>
             </h4>
             <p class="card-description">
-              Details coming soon.
+              AI secretary that schedules, reminds, and commands from your Obsidian vault,
+              speaking as Commander Erwin via ElevenLabs-trained weights deployed on Piper TTS.
             </p>
             <div class="card-tags">
               <span class="tag">Voice AI</span>
-              <span class="tag">ML</span>
+              <span class="tag">Obsidian</span>
+              <span class="tag">Piper</span>
             </div>
           </div>
         </a>
@@ -219,7 +234,7 @@ import '../styles/global.css';
         <Card
           period="STEM Education"
           title="RiseEd · Accessible STEM Learning"
-          description="Built RiseEd to make STEM approachable for younger students — especially those from low-income backgrounds. Designed a website of simple, engaging lesson slides and booklets, iterating on feedback from teachers to turn intimidating topics into resources students and educators could actually use."
+          description="Built RiseEd to make STEM approachable for younger students, especially those from low-income backgrounds. Designed a website of simple, engaging lesson slides and booklets, iterating on feedback from teachers to turn intimidating topics into resources students and educators could actually use."
           tags={[
             { label: "Education" },
             { label: "Outreach" },
@@ -231,7 +246,7 @@ import '../styles/global.css';
         <Card
           period="Thermodynamics"
           title="CoolBreeze · Low-Cost Air Conditioner"
-          description="Designed and built a low-cost air conditioner grounded in thermodynamics principles — optimizing insulation and efficiency on a tight budget — then documented the full build in a video to make the science reproducible for anyone who wanted to follow along."
+          description="Designed and built a low-cost air conditioner grounded in thermodynamics principles, optimizing insulation and efficiency on a tight budget, then documented the full build in a video to make the science reproducible for anyone who wanted to follow along."
           tags={[
             { label: "Thermodynamics" },
             { label: "Hardware" },
@@ -246,14 +261,14 @@ import '../styles/global.css';
         <h3 class="section-heading-mobile">Education</h3>
 
         <Card
-          period="June 2025 — June 2029"
+          period="June 2025 - June 2029"
           title="Massachusetts Institute of Technology"
           description="Candidate for B.S. in Aerospace Engineering (Course 16). <br /><strong>Relevant Coursework:</strong> Introduction to Autonomy <br /><strong>Advanced Learning (Audit):</strong> Deep Learning (Graduate Level), Advances in Computer Vision (Graduate Level)"
           tags={[]}
         />
 
         <Card
-          period="Sep 2023 — Apr 2024"
+          period="Sep 2023 - Apr 2024"
           title="The Coding School"
           description="Completed two-semester courses in Artificial Intelligence and Quantum Computing, developing neural network, NLP, and reinforcement learning models for real-world applications. Implemented foundational quantum algorithms using the Cirq library."
           tags={[]}

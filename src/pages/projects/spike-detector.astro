@@ -1,17 +1,68 @@
 ---
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import Media from '../../components/Media.astro';
+import MediaGrid from '../../components/MediaGrid.astro';
 ---
 
 <ProjectLayout
   title="Spike Detector"
-  subtitle="Details coming soon"
+  subtitle="Pre-market binary classifier for significant intraday stock moves"
   tags={[
-    { label: "Machine Learning", href: "https://en.wikipedia.org/wiki/Machine_learning" },
-    { label: "Detection", href: "https://en.wikipedia.org/wiki/Anomaly_detection" },
+    { label: "XGBoost", href: "https://en.wikipedia.org/wiki/XGBoost" },
+    { label: "FinBERT", href: "https://en.wikipedia.org/wiki/BERT_(language_model)" },
+    { label: "Alpaca", href: "https://alpaca.markets" },
+    { label: "Python", href: "https://en.wikipedia.org/wiki/Python_(programming_language)" },
   ]}
 >
   <section class="story-section">
-    <h2>Overview</h2>
-    <p>Project write-up coming soon.</p>
+    <h2>The Problem</h2>
+    <p>
+      This is not a price predictor. It is a binary spike classifier: given everything knowable
+      before the open (~9:15 AM ET), will a ticker make a significant intraday move relative
+      to its own recent volatility? Thresholds adapt per ticker so a volatile name is not
+      scored the same way as a quiet one.
+    </p>
+    <p>
+      The practical goal each morning is a short watchlist of the 2-3 names most likely to
+      move ~3%+, with a direction call and risk-limited bracket orders.
+    </p>
+  </section>
+
+  <section class="story-section">
+    <h2>Pipeline</h2>
+    <p>
+      Features span FinBERT news sentiment, technicals, macro, earnings, calendar effects,
+      and a statistical-mechanics layer (entropy, sector magnetization, Boltzmann calibration,
+      Ising overlay). A two-stage XGBoost stack first estimates P(spike), then P(up | spike).
+    </p>
+    <p>
+      Cloudflare Worker crons kick GitHub Actions for predict/trade at open, a delayed A/B
+      account at 10:00 AM, end-of-day validation, and bi-weekly retrain. Telegram broadcasts
+      the watchlist and trade confirms with no human in the loop.
+    </p>
+
+    <!--
+    <MediaGrid>
+      <Media
+        src="/assets/projects/spike-detector/trend.png"
+        alt="Validation trend chart"
+        caption="Rolling validation metrics from live paper trading"
+      />
+      <Media
+        src="/assets/projects/spike-detector/backtest.png"
+        alt="Backtest strategy results"
+        caption="Historical strategy backtest with TP/SL"
+      />
+    </MediaGrid>
+    -->
+  </section>
+
+  <section class="story-section">
+    <h2>Status</h2>
+    <p>
+      Fully automated paper trading is live: morning predict, dual-account A/B timing
+      experiment, EOD validation charts, and scheduled retrain. Focus now is calibration
+      quality and whether delayed fills beat open fills under real slippage.
+    </p>
   </section>
 </ProjectLayout>

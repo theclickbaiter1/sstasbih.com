@@ -1,17 +1,60 @@
 ---
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import Media from '../../components/Media.astro';
+import MediaGrid from '../../components/MediaGrid.astro';
 ---
 
 <ProjectLayout
   title="Kalshi Optimization"
-  subtitle="Details coming soon"
+  subtitle="Finding mispriced sports contracts with Elo, stats, and statistical mechanics"
   tags={[
-    { label: "Trading", href: "https://en.wikipedia.org/wiki/Algorithmic_trading" },
-    { label: "Optimization", href: "https://en.wikipedia.org/wiki/Mathematical_optimization" },
+    { label: "Kalshi", href: "https://kalshi.com" },
+    { label: "Elo", href: "https://en.wikipedia.org/wiki/Elo_rating_system" },
+    { label: "Kelly Criterion", href: "https://en.wikipedia.org/wiki/Kelly_criterion" },
+    { label: "Python", href: "https://en.wikipedia.org/wiki/Python_(programming_language)" },
   ]}
 >
   <section class="story-section">
-    <h2>Overview</h2>
-    <p>Project write-up coming soon.</p>
+    <h2>What It Does</h2>
+    <p>
+      An autonomous scanner for Kalshi (and Polymarket-style) sports markets. It estimates
+      fair contract prices by fusing bookmaker consensus odds, team Elo ratings, and
+      season-to-date performance stats, then flags edges and sizes bets with Kelly-style
+      fractions under risk caps.
+    </p>
+  </section>
+
+  <section class="story-section">
+    <h2>Model Stack</h2>
+    <p>
+      The fair-value engine blends Elo matchup probabilities with a LogFive / Pythagorean
+      scoring expectancy term. League "temperature" from recent upset entropy scales how
+      sharp the Elo gaps should be. Outright markets get normalized through a partition
+      function so mutually exclusive contracts sum to 100%. Momentum and mean-reversion
+      heuristics (Ising-style susceptibility, Langevin gap dynamics) further damp Kelly
+      size when the market is in a hype cascade.
+    </p>
+    <p>
+      Scan cycles persist Elo and opportunity state in SQLite (or Cloudflare D1 when running
+      serverless) and push Telegram alerts when a tradeable edge appears.
+    </p>
+
+    <!--
+    <Media
+      src="/assets/projects/kalshi-optimization/edge-dashboard.png"
+      alt="Kalshi edge scan dashboard"
+      caption="Sample scan: fair vs market price with Kelly size"
+      aspect="16/9"
+    />
+    -->
+  </section>
+
+  <section class="story-section">
+    <h2>Status</h2>
+    <p>
+      Core scan loop, Elo seeding, ESPN stats fetch, and Telegram notifications are in place.
+      Ongoing work is calibration quality, market coverage, and keeping the sizing model
+      honest under real microstructure noise.
+    </p>
   </section>
 </ProjectLayout>

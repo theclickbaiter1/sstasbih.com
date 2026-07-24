@@ -1,17 +1,69 @@
 ---
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import Media from '../../components/Media.astro';
+import MediaGrid from '../../components/MediaGrid.astro';
 ---
 
 <ProjectLayout
   title="Project Erwin"
-  subtitle="Details coming soon"
+  subtitle="An AI secretary that runs your day from voice, Obsidian, and a cloned command voice"
   tags={[
     { label: "Voice AI", href: "https://en.wikipedia.org/wiki/Speech_synthesis" },
-    { label: "Machine Learning", href: "https://en.wikipedia.org/wiki/Machine_learning" },
+    { label: "Obsidian", href: "https://obsidian.md" },
+    { label: "Piper TTS", href: "https://github.com/rhasspy/piper" },
+    { label: "Telegram", href: "https://telegram.org" },
   ]}
 >
   <section class="story-section">
-    <h2>Overview</h2>
-    <p>Project write-up coming soon.</p>
+    <h2>The Goal</h2>
+    <p>
+      Erwin is meant to be an AI secretary: it figures out your schedule, issues reminders and
+      commands from what you tell it, and makes task logging low-friction. Logging work should
+      not become its own productivity tax. The voice is Commander Erwin from Attack on Titan;
+      the agent has access to whatever personal data you choose to give it.
+    </p>
+  </section>
+
+  <section class="story-section">
+    <h2>How It Runs</h2>
+    <p>
+      Day-to-day context lives in an Obsidian vault (everything except high-sensitivity secrets
+      like SSNs). The agent reads that vault to manage schedule and decide what to surface next,
+      cutting the friction of "what should I do right now?"
+    </p>
+    <p>
+      Voice was cloned and generated with ElevenLabs for dataset creation, then deployed
+      locally with Piper TTS so replies can run without a cloud TTS bill. The local node
+      talks over Telegram (text + voice notes) and handles deadline-aware reminders as a
+      long-running service.
+    </p>
+    <p>
+      The stack currently spans a Jarvis frontend node and a jarvis-backend / Erwin voice-weights
+      pipeline; those repos are headed for a merge and rename under Project Erwin.
+    </p>
+
+    <!--
+    <Media
+      src="/assets/projects/erwin/telegram-thread.png"
+      alt="Telegram conversation with Erwin"
+      caption="Sample Telegram thread: schedule query + voice reply"
+      aspect="9/16"
+    />
+    <Media
+      src="/assets/projects/erwin/obsidian-context.png"
+      alt="Obsidian vault context for Erwin"
+      caption="Vault notes the agent uses for scheduling and priorities"
+      aspect="16/9"
+    />
+    -->
+  </section>
+
+  <section class="story-section">
+    <h2>Status</h2>
+    <p>
+      Local Telegram + Piper voice path works. Voice-weight pipeline (clip harvest, ElevenLabs
+      synthesis, fine-tune export) exists as a separate track. Next step is unifying the repos
+      into one Erwin product surface.
+    </p>
   </section>
 </ProjectLayout>

@@ -1,0 +1,66 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import Media from '../../components/Media.astro';
+import MediaGrid from '../../components/MediaGrid.astro';
+---
+
+<ProjectLayout
+  title="6-Axis Arm"
+  subtitle="Adaptive inverse kinematics that learns through hardware deformities"
+  tags={[
+    { label: "Robotics", href: "https://en.wikipedia.org/wiki/Robotics" },
+    { label: "Inverse Kinematics", href: "https://en.wikipedia.org/wiki/Inverse_kinematics" },
+    { label: "Hebbian Learning", href: "https://en.wikipedia.org/wiki/Hebbian_theory" },
+    { label: "MuJoCo", href: "https://en.wikipedia.org/wiki/MuJoCo" },
+  ]}
+>
+  <section class="story-section">
+    <h2>The Goal</h2>
+    <p>
+      I want an inverse kinematics stack that stays accurate even when the arm deforms over
+      time or during deployment: backlash, wear, manufacturing tolerances, soft mounts. If
+      the controller can absorb those imperfections online, everyday IK applications can ship
+      with much looser (cheaper) mechanical tolerances.
+    </p>
+  </section>
+
+  <section class="story-section">
+    <h2>Hebbian Control Policy</h2>
+    <p>
+      The plan centers on a partial Hebbian network for the control policy. Unlike most
+      reinforcement learning setups that freeze after training, Hebbian plasticity keeps
+      learning from live hardware. That means the policy can train on deformed joint data
+      and make decisions that already account for those deformities.
+    </p>
+    <p>
+      In practice this sits on top of a model-based operational-space tracker, with the
+      adaptive layer correcting for unmodeled error so the arm keeps tracking paths as the
+      plant drifts.
+    </p>
+
+    <!--
+    <MediaGrid>
+      <Media
+        src="/assets/projects/6-axis-arm/mujoco-view.png"
+        alt="MuJoCo arm simulation"
+        caption="Arm tracking a path in MuJoCo"
+      />
+      <Media
+        src="/assets/projects/6-axis-arm/tracking-error.png"
+        alt="Tracking error with and without adapter"
+        caption="End-effector error: OSC alone vs OSC + Hebbian adapter"
+      />
+    </MediaGrid>
+    -->
+  </section>
+
+  <section class="story-section">
+    <h2>Why It Matters</h2>
+    <p>
+      Classical IK assumes the kinematic model matches the robot. Real arms diverge. An
+      always-learning adapter turns that mismatch into something the controller can keep
+      eating, instead of something that forces a recalibration ritual or tighter (and more
+      expensive) machining.
+    </p>
+  </section>
+</ProjectLayout>

@@ -677,7 +677,7 @@ a.tag {
   line-height: 1.6;
 }
 
-/* Story media (legacy class — prefer Media.astro) */
+/* Story media (legacy class; prefer Media.astro) */
 .story-media {
   margin: 1.5rem 0;
   border-radius: 0.75rem;

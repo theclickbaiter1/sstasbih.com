@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Shahid Tasbih — Aerospace Engineering student at MIT. Building autonomous machines and future spacecraft." } = Astro.props;
+const { title, description = "Shahid Tasbih - Aerospace Engineering student at MIT. Building autonomous machines and future spacecraft." } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -61,7 +61,7 @@ const { title, description = "Shahid Tasbih — Aerospace Engineering student at
       document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
     }
 
-    // Lightbox (images only — videos keep native controls)
+    // Lightbox (images only; videos keep native controls)
     const lightbox = document.getElementById('lightbox');
     document.querySelectorAll('.card-media img, .story-media img, .media-frame img').forEach((img) => {
       (img as HTMLElement).style.cursor = 'zoom-in';

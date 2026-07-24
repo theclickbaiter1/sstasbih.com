@@ -1,17 +1,71 @@
 ---
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import Media from '../../components/Media.astro';
+import MediaGrid from '../../components/MediaGrid.astro';
 ---
 
 <ProjectLayout
   title="UFO Project"
-  subtitle="Details coming soon"
+  subtitle="Canceling linear acceleration with centrifugal mechanics for high-G maneuvers"
   tags={[
     { label: "Reinforcement Learning", href: "https://en.wikipedia.org/wiki/Reinforcement_learning" },
     { label: "Simulation", href: "https://en.wikipedia.org/wiki/Simulation" },
+    { label: "PyTorch", href: "https://en.wikipedia.org/wiki/PyTorch" },
   ]}
 >
   <section class="story-section">
-    <h2>Overview</h2>
-    <p>Project write-up coming soon.</p>
+    <h2>The Idea</h2>
+    <p>
+      I am building a centrifugal system that cancels linear acceleration using rotational
+      mechanics. The long-term applications are aggressive fighter-jet and missile-evasion
+      maneuvers where the vehicle can pull extreme G without putting the same sustained load
+      on a pilot or payload.
+    </p>
+    <p>
+      The core trick: spin an inner vessel so that centrifugal effects offset a large fraction
+      of the outer frame's linear acceleration, keeping the accelerometer (and a hypothetical
+      occupant) closer to a tolerable load.
+    </p>
+  </section>
+
+  <section class="story-section">
+    <h2>2D RL Prototype</h2>
+    <p>
+      So far I have a 2D reinforcement learning environment and a trained policy that minimizes
+      total experienced acceleration. Earth's 1g gravity is baked in as a constant so the model
+      does not waste capacity rediscovering it. RL was the fastest way to find a workable
+      control policy without hand-deriving every feedback loop; a more robust classical or
+      hybrid controller would come later for a real system.
+    </p>
+    <p>
+      In simulation the outer frame can hit up to 10g of linear acceleration (deceleration).
+      The policy spins the vessel such that the inner accelerometer settles around
+      <strong>1.64g</strong> of sustained force, roughly takeoff or landing feel instead of a
+      10g crash pulse.
+    </p>
+
+    <!--
+    <Media
+      src="/assets/projects/ufo/sim-render.png"
+      alt="2D UFO centrifugal simulation"
+      caption="2D environment: outer deceleration vs inner pod acceleration"
+      aspect="16/9"
+    />
+    <Media
+      src="/assets/projects/ufo/accel-plot.png"
+      alt="Acceleration comparison plot"
+      caption="Outer frame ~10g pulse vs inner accelerometer ~1.64g sustained"
+      aspect="16/9"
+    />
+    -->
+  </section>
+
+  <section class="story-section">
+    <h2>Hard Part Next</h2>
+    <p>
+      Software can prove the control idea in sim. Hardware is the bottleneck: finding a motor
+      that can dump enough rotational energy into the system quickly enough to track a real
+      high-G event.
+    </p>
   </section>
 </ProjectLayout>

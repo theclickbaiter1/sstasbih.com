@@ -6,7 +6,7 @@ import MediaGrid from '../../components/MediaGrid.astro';
 
 <ProjectLayout
   title="Deep Q-Network for Autonomous Lunar Landing"
-  subtitle="Teaching an RL agent to land on the Moon — from 2D prototypes to 3D physics simulations"
+  subtitle="Teaching an RL agent to land on the Moon, from 2D prototypes to 3D physics simulations"
   tags={[
     { label: "PyTorch", href: "https://en.wikipedia.org/wiki/PyTorch" },
     { label: "D3QN", href: "https://en.wikipedia.org/wiki/Q-learning#Deep_Q-network" },
@@ -19,7 +19,7 @@ import MediaGrid from '../../components/MediaGrid.astro';
   <section class="story-section">
     <h2>The Problem</h2>
     <p>
-      Autonomous lunar landing is one of the hardest control problems in aerospace — the agent must
+      Autonomous lunar landing is one of the hardest control problems in aerospace: the agent must
       manage fuel, attitude, and descent rate simultaneously while dealing with no atmosphere for
       aerodynamic braking. I wanted to see if a reinforcement learning agent could learn this from
       scratch, with no pre-programmed flight dynamics knowledge.
@@ -29,13 +29,13 @@ import MediaGrid from '../../components/MediaGrid.astro';
   <section class="story-section">
     <h2>Phase 1: 2D Prototype</h2>
     <p>
-      I started with OpenAI Gymnasium's LunarLander-v2 environment — a simplified 2D problem with
+      I started with OpenAI Gymnasium's LunarLander-v2 environment, a simplified 2D problem with
       discrete thrust actions. I implemented a Dueling Double Deep Q-Network (D3QN) in PyTorch that
       achieved a &gt;95% landing success rate after training.
     </p>
     <div class="story-callout">
-      <strong>Key insight:</strong> The dueling architecture — splitting the Q-value into state-value
-      and advantage streams — dramatically improved learning stability compared to vanilla DQN.
+      <strong>Key insight:</strong> The dueling architecture, splitting the Q-value into state-value
+      and advantage streams, dramatically improved learning stability compared to vanilla DQN.
     </div>
 
     <!-- Drop files into public/assets/projects/lunar-lander/ then uncomment -->
@@ -112,7 +112,7 @@ import MediaGrid from '../../components/MediaGrid.astro';
     <h2>Results & Takeaways</h2>
     <p>
       The final DDPG agent achieves reliable soft landings with fuel-efficient trajectories. The hybrid
-      controller approach was essential — pure RL struggled with attitude control, while the PD layer
+      controller approach was essential: pure RL struggled with attitude control, while the PD layer
       provided the stability the RL agent could build on top of.
     </p>
     <p>
