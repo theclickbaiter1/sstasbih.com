@@ -11,21 +11,23 @@ interface Props {
   src: string;
   alt: string;
   caption?: string;
-  type?: 'image' | 'video';
+  type?: 'image' | 'video' | 'audio';
   /** Aspect ratio hint for layout stability before load */
   aspect?: '16/9' | '4/3' | '1/1' | 'auto';
 }
 
 const { src, alt, caption, type = 'image', aspect = 'auto' } = Astro.props;
-const aspectStyle = aspect === 'auto' ? undefined : `aspect-ratio: ${aspect}`;
+const aspectStyle = aspect === 'auto' || type === 'audio' ? undefined : `aspect-ratio: ${aspect}`;
 ---
 
 <figure class="media reveal" data-media>
-  <div class="media-frame" style={aspectStyle}>
+  <div class={`media-frame${type === 'audio' ? ' media-frame--audio' : ''}`} style={aspectStyle}>
     {type === 'video' ? (
       <video src={src} controls preload="metadata" playsinline>
         <track kind="captions" />
       </video>
+    ) : type === 'audio' ? (
+      <audio src={src} controls preload="metadata">{alt}</audio>
     ) : (
       <img src={src} alt={alt} loading="lazy" decoding="async" />
     )}

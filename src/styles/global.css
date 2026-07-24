@@ -738,6 +738,16 @@ a.tag {
   background-color: #000;
 }
 
+.media-frame--audio {
+  padding: 1rem 1.25rem;
+  background-color: var(--bg-sidebar);
+}
+
+.media-frame audio {
+  width: 100%;
+  display: block;
+}
+
 .media-caption {
   padding: 0.7rem 1rem;
   font-size: 0.78rem;

@@ -1,7 +1,6 @@
 ---
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
 import Media from '../../components/Media.astro';
-import MediaGrid from '../../components/MediaGrid.astro';
 ---
 
 <ProjectLayout
@@ -32,38 +31,43 @@ import MediaGrid from '../../components/MediaGrid.astro';
       cutting the friction of "what should I do right now?"
     </p>
     <p>
-      Voice was cloned and generated with ElevenLabs for dataset creation, then deployed
-      locally with Piper TTS so replies can run without a cloud TTS bill. The local node
-      talks over Telegram (text + voice notes) and handles deadline-aware reminders as a
-      long-running service.
+      The intended voice path is ElevenLabs for dataset creation, then local Piper (or
+      GPT-SoVITS) so replies run without a cloud TTS bill. Weights are not trained yet;
+      the pipelines are in place for that. The local node talks over Telegram (text + voice
+      notes) and handles deadline-aware reminders as a long-running service.
     </p>
     <p>
-      The stack currently spans a Jarvis frontend node and a jarvis-backend / Erwin voice-weights
-      pipeline; those repos are headed for a merge and rename under Project Erwin.
+      The former Jarvis runtime, jarvis-backend Piper fine-tune track, and Erwin AI Voice Weights
+      GPT-SoVITS pipeline now live in one Project Erwin repo: Telegram node at the root,
+      <code>voice/piper-finetune/</code>, and <code>voice/gptsovits/</code>.
     </p>
 
-    <!--
     <Media
       src="/assets/projects/erwin/telegram-thread.png"
       alt="Telegram conversation with Erwin"
-      caption="Sample Telegram thread: schedule query + voice reply"
-      aspect="9/16"
+      caption="Sample Telegram thread: schedule query, reminder set, and voice reply"
+      aspect="auto"
     />
     <Media
       src="/assets/projects/erwin/obsidian-context.png"
       alt="Obsidian vault context for Erwin"
-      caption="Vault notes the agent uses for scheduling and priorities"
+      caption="Vault notes the agent uses for scheduling and priorities (personal paths blurred)"
       aspect="16/9"
     />
-    -->
+    <Media
+      src="/assets/projects/erwin/voice-sample.mp3"
+      alt="Erwin voice reminder sample"
+      caption="Piper TTS voice sample: deep-work reminder"
+      type="audio"
+    />
   </section>
 
   <section class="story-section">
     <h2>Status</h2>
     <p>
-      Local Telegram + Piper voice path works. Voice-weight pipeline (clip harvest, ElevenLabs
-      synthesis, fine-tune export) exists as a separate track. Next step is unifying the repos
-      into one Erwin product surface.
+      Telegram + local TTS path works. Fine-tune / clone pipelines live under
+      <code>voice/</code>; Erwin-specific weights are still the next step, not shipped.
+      Portfolio media on this page is the current evidence of the product surface.
     </p>
   </section>
 </ProjectLayout>

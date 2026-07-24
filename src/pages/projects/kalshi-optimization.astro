@@ -39,14 +39,25 @@ import MediaGrid from '../../components/MediaGrid.astro';
       serverless) and push Telegram alerts when a tradeable edge appears.
     </p>
 
-    <!--
     <Media
       src="/assets/projects/kalshi-optimization/edge-dashboard.png"
       alt="Kalshi edge scan dashboard"
       caption="Sample scan: fair vs market price with Kelly size"
       aspect="16/9"
     />
-    -->
+
+    <MediaGrid>
+      <Media
+        src="/assets/projects/kalshi-optimization/calibration.png"
+        alt="Calibration reliability and fair vs market"
+        caption="Reliability diagram and fair vs market from n=302 resolved singles (D1, Jul 2026)"
+      />
+      <Media
+        src="/assets/projects/kalshi-optimization/architecture.png"
+        alt="Kalshi Optimization pipeline diagram"
+        caption="Odds and Elo fuse into fair value, then Kelly with stat-mech dampers to Telegram"
+      />
+    </MediaGrid>
   </section>
 
   <section class="story-section">
