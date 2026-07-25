@@ -9,4 +9,6 @@
     font-weight="700"
     fill="#ffffff"
   >S</text>
+  <circle cx="25" cy="7" r="7" fill="#f8f9fa"/>
+  <circle cx="25" cy="7" r="5.5" fill="#ef4444"/>
 </svg>

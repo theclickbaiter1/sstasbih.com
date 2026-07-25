@@ -1,10 +1,13 @@
 ---
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
 }
 
-const { title, description = "Shahid Tasbih - Aerospace Engineering student at MIT. Building autonomous machines and future spacecraft." } = Astro.props;
+const {
+  title = "Shahid · MIT",
+  description = "Shahid Tasbih - Aerospace Engineering student at MIT. Building autonomous machines and future spacecraft.",
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -14,6 +17,7 @@ const { title, description = "Shahid Tasbih - Aerospace Engineering student at M
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" id="favicon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -24,6 +28,30 @@ const { title, description = "Shahid Tasbih - Aerospace Engineering student at M
   <div class="lightbox" id="lightbox"></div>
 
   <script>
+    // Tab attention: title + favicon change when the user leaves
+    const ACTIVE_TITLE = 'Shahid · MIT';
+    const AWAY_TITLE = 'Hey...';
+    const ACTIVE_ICON = '/favicon.svg';
+    const AWAY_ICON = '/favicon-alert.svg';
+
+    const favicon = document.getElementById('favicon') as HTMLLinkElement | null;
+
+    const setAway = () => {
+      document.title = AWAY_TITLE;
+      if (favicon) favicon.href = AWAY_ICON;
+    };
+    const setActive = () => {
+      document.title = ACTIVE_TITLE;
+      if (favicon) favicon.href = ACTIVE_ICON;
+    };
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) setAway();
+      else setActive();
+    });
+    window.addEventListener('blur', setAway);
+    window.addEventListener('focus', setActive);
+
     // Cursor glow
     const glow = document.getElementById('cursorGlow');
     let glowVisible = false;
