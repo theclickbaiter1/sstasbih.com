@@ -28,19 +28,67 @@ const {
   <div class="lightbox" id="lightbox"></div>
 
   <script>
-    // Tab attention: title + favicon change when the user leaves
+    // Tab attention: title + spinning away favicon when the user leaves
     const ACTIVE_TITLE = 'Shahid · MIT';
     const AWAY_TITLE = 'Hey - come back';
     const ACTIVE_ICON = '/favicon.svg';
-    const AWAY_ICON = '/favicon-alert.svg';
 
     const favicon = document.getElementById('favicon') as HTMLLinkElement | null;
+    let spinTimer: ReturnType<typeof setInterval> | null = null;
+    let cycleTimer: ReturnType<typeof setTimeout> | null = null;
+    let away = false;
+
+    /** Black + purple mark; red badge fixed; S rotates for a 360 flip. */
+    const awayIcon = (deg: number) => {
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="8" fill="#0b0b0f"/>
+  <rect x="1" y="1" width="30" height="30" rx="7" stroke="#7c3aed" stroke-width="1.5" fill="none"/>
+  <g transform="rotate(${deg} 16 16)">
+    <text x="16" y="22" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="700" fill="#c4b5fd">S</text>
+  </g>
+  <circle cx="25" cy="7" r="7" fill="#0b0b0f"/>
+  <circle cx="25" cy="7" r="5.5" fill="#ef4444"/>
+</svg>`;
+      return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+    };
+
+    const stopSpin = () => {
+      if (spinTimer) clearInterval(spinTimer);
+      if (cycleTimer) clearTimeout(cycleTimer);
+      spinTimer = null;
+      cycleTimer = null;
+    };
+
+    const runFlip = () => {
+      if (!favicon || !away) return;
+      let deg = 0;
+      const step = 30;
+      const frameMs = 50; // 12 frames * 50ms ≈ 0.6s per flip
+      spinTimer = setInterval(() => {
+        deg += step;
+        if (favicon) favicon.href = awayIcon(deg);
+        if (deg >= 360) {
+          if (spinTimer) clearInterval(spinTimer);
+          spinTimer = null;
+          if (favicon) favicon.href = awayIcon(0);
+          // Pause, then flip again
+          cycleTimer = setTimeout(runFlip, 2500);
+        }
+      }, frameMs);
+    };
 
     const setAway = () => {
+      if (away) return;
+      away = true;
       document.title = AWAY_TITLE;
-      if (favicon) favicon.href = AWAY_ICON;
+      stopSpin();
+      if (favicon) favicon.href = awayIcon(0);
+      runFlip();
     };
+
     const setActive = () => {
+      away = false;
+      stopSpin();
       document.title = ACTIVE_TITLE;
       if (favicon) favicon.href = ACTIVE_ICON;
     };
